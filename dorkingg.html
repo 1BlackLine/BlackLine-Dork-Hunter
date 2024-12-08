@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BlackLine DORK HUNTER</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+
+        h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            color: #00ff9f;
+            text-align: center;
+            position: relative;
+    
+        }
+
+        h2::before, h2::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            overflow: hidden;
+            animation: glitch 1.5s infinite;
+        }
+
+        h2::before {
+            left: 2px;
+            text-shadow: -9px 0 #ff0080;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%);
+        }
+
+        h2::after {
+            left: -2px;
+            text-shadow: -2px 0 #00ffff;
+            clip-path: polygon(0 90%, 100% 90%, 100% 100%, 0 100%);
+        }
+
+        p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #f2f2f2;
+            text-align: center;
+        }
+
+        .btn {
+            background: linear-gradient(90deg, #00ff9f, #00968a);
+            color: #000;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0px 8px 15px rgba(0, 255, 159, 0.5);
+            transition: all 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        .btn img {
+            width: 24px;
+            height: 24px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            background: linear-gradient(90deg, #00968a, #00ff9f);
+            box-shadow: 0px 12px 20px rgba(0, 255, 159, 0.7);
+            text-align: center;
+            
+        }
+
+        .support-images {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .support-images img {
+            width: 80px;
+            height: auto;
+            filter: brightness(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .support-images img:hover {
+            transform: scale(1.2);
+            filter: brightness(1);
+        }
+
+        @keyframes glitch {
+            0% {
+                clip-path: inset(10% 0 90% 0);
+            }
+            20% {
+                clip-path: inset(50% 0 20% 0);
+            }
+            40% {
+                clip-path: inset(30% 0 40% 0);
+            }
+            60% {
+                clip-path: inset(70% 0 10% 0);
+            }
+            80% {
+                clip-path: inset(20% 0 60% 0);
+            }
+            100% {
+                clip-path: inset(10% 0 90% 0);
+            }
+        }
+        body {
+            background-color: #0a0a0a;
+            overflow-x: hidden;
+        }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+     
+        .glitch-text {
+            position: relative;
+            color: #00ff41;
+            text-shadow: 
+                0.05em 0 0 #ff0000, 
+                -0.03em -0.04em 0 #00ff41, 
+                0.02em 0.04em 0 #0000ff;
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { text-shadow: 0.05em 0 0 #ff0000, -0.03em -0.04em 0 #00ff41, 0.02em 0.04em 0 #0000ff; }
+            15% { text-shadow: 0.05em 0 0 #00ff41, -0.03em -0.04em 0 #ff0000, 0.02em 0.04em 0 #0000ff; }
+            16% { text-shadow: -0.05em -0.025em 0 #00ff41, 0.025em 0.035em 0 #ff0000, -0.05em -0.05em 0 #0000ff; }
+            49% { text-shadow: -0.05em -0.025em 0 #00ff41, 0.025em 0.035em 0 #ff0000, -0.05em -0.05em 0 #0000ff; }
+            50% { text-shadow: 0.05em 0.035em 0 #ff0000, 0.03em 0 0 #00ff41, 0 -0.04em 0 #0000ff; }
+            99% { text-shadow: 0.05em 0.035em 0 #ff0000, 0.03em 0 0 #00ff41, 0 -0.04em 0 #0000ff; }
+            100% { text-shadow: -0.05em 0 0 #0000ff, -0.025em -0.04em 0 #ff0000, -0.04em -0.025em 0 #00ff41; }
+        }
+        .terminal-border {
+            border: 2px solid #00ff41;
+            box-shadow: 
+                0 0 10px #00ff41,
+                inset 0 0 10px #00ff41;
+                
+        }
+        .dork-item {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .dork-item:hover {
+            transform: scale(1.05);
+            background-color: rgba(0, 255, 65, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+        }
+    </style>
+</head>
+<body class="text-white font-mono">
+    <div id="particles-js"></div>
+
+    <div class="container mx-auto px-4 py-8 relative z-10">
+        <div class="text-center mb-12">
+            <h1 class="text-6xl font-bold glitch-text uppercase tracking-widest">
+                BLackLine Dork Hunter
+            </h1>
+            <p class="text-sm text-green-400 opacity-70">v1.0 | UNDERGROUND EDITION</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto terminal-border rounded-lg p-6 bg-black bg-opacity-80">
+            <div class="mb-6 flex space-x-4">
+                <input 
+                    type="text" 
+                    placeholder="Enter Domain (replace example.com)"
+                    id="domainInput"
+                    class="flex-grow bg-transparent border-2 border-green-700 text-green-400 p-3 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                >
+            </div>
+
+            <div id="dorkList" class="space-y-4">
+            <h1>General Information Gathering</h1>
+                <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Find Directory Listing</div>
+                            <code id="dork1" class="text-sm text-green-500 dork-code" data-original-text='intitle:"index of"= "parent directory" site:example.com'>intitle:"index of"= "parent directory" site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Find configuration files</div>
+                            <code id="dork2" class="text-sm text-green-500 dork-code" data-original-text='ext:xml OR ext:conf OR ext:cnf OR ext:ini OR ext:ini OR ext:env "DB_PASSWORD" site:example.com'>ext:xml OR ext:conf OR ext:cnf OR ext:ini OR ext:ini OR ext:env "DB_PASSWORD" site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Discover database backups</div>
+                            <code id="dork3" class="text-sm text-green-500 dork-code" data-original-text='ext:sql "password" OR "username" OR "backup" site:example.com'>ext:sql "password" OR "username" OR "backup" site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Expose sensitive server info files</div>
+                            <code id="dork4" class="text-sm text-green-500 dork-code" data-original-text='ext:php inurl:info.php OR inurl:phpinfo.php site:example.com'>ext:php inurl:info.php OR inurl:phpinfo.php site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Identify WordPress login pages</div>
+                            <code id="dork4" class="text-sm text-green-500 dork-code" data-original-text='inurl:wp-login.php OR inurl:wp-admin site:example.com'>inurl:wp-login.php OR inurl:wp-admin site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Search for exposed Laravel .env files</div>
+                            <code id="dork4" class="text-sm text-green-500 dork-code" data-original-text='ext:env "DB_PASSWORD" OR "DB_USERNAME" "APP_KEY" site:example.com'>ext:env "DB_PASSWORD" OR "DB_USERNAME" "APP_KEY" site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Find Git repositories or sensitive files</div>
+                            <code id="dork4" class="text-sm text-green-500 dork-code" data-original-text='inurl:.git OR inurl:.svn OR inurl:.hg -github site:example.com'>inurl:.git OR inurl:.svn OR inurl:.hg -github site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Explore cloud storage links</div>
+                            <code id="dork4" class="text-sm text-green-500 dork-code" data-original-text='site:drive.google.com OR site:dropbox.com OR site:onedrive.com site:example.com'>site:drive.google.com OR site:dropbox.com OR site:onedrive.com intext:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Find outdated software or CMS</div>
+                            <code id="dork4" class="text-sm text-green-500 dork-code" data-original-text='"powered by WordPress" "Version 4." OR "powered by Joomla" "Version 3." site:example.com'>"powered by WordPress" "Version 4." OR "powered by Joomla" "Version 3." site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Find Secret Key</div>
+                            <code id="dork4" class="text-sm text-green-500 dork-code" data-original-text='filetype:yaml "secret_key" site:example.com'>"filetype:yaml "secret_key" site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Find outdated software or CMS</div>
+                            <code id="dork4" class="text-sm text-green-500 dork-code" data-original-text='"powered by WordPress" "Version 4." OR "powered by Joomla" "Version 3." site:example.com'>"powered by WordPress" "Version 4." OR "powered by Joomla" "Version 3." site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+    <div class="flex justify-between items-center">
+        <div>
+            <div class="font-bold text-green-300">Find private keys</div>
+            <code id="dork1" class="text-sm text-green-500 dork-code" data-original-text='filetype:key "PRIVATE KEY" site:example.com'>filetype:key "PRIVATE KEY" site:example.com</code>
+        </div>
+        <div class="flex space-x-2">
+            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+        </div>
+    </div>
+</div>
+<div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+    <div class="flex justify-between items-center">
+        <div>
+            <div class="font-bold text-green-300">Find PEM keys</div>
+            <code id="dork2" class="text-sm text-green-500 dork-code" data-original-text='filetype:pem "PRIVATE KEY" site:example.com'>filetype:pem "PRIVATE KEY" site:example.com</code>
+        </div>
+        <div class="flex space-x-2">
+            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+        </div>
+    </div>
+</div>
+<div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+    <div class="flex justify-between items-center">
+        <div>
+            <div class="font-bold text-green-300">Find debug logs</div>
+            <code id="dork3" class="text-sm text-green-500 dork-code" data-original-text='filetype:log "debug" "error" site:example.com'>filetype:log "debug" "error" site:example.com</code>
+        </div>
+        <div class="flex space-x-2">
+            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+        </div>
+    </div>
+</div>
+<div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+    <div class="flex justify-between items-center">
+        <div>
+            <div class="font-bold text-green-300">Find stack traces</div>
+            <code id="dork4" class="text-sm text-green-500 dork-code" data-original-text='filetype:log "Stack trace" site:example.com'>filetype:log "Stack trace" site:example.com</code>
+        </div>
+        <div class="flex space-x-2">
+            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+        </div>
+    </div>
+</div>
+<div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+    <div class="flex justify-between items-center">
+        <div>
+            <div class="font-bold text-green-300">Find connection issues</div>
+            <code id="dork5" class="text-sm text-green-500 dork-code" data-original-text='filetype:log "unable to connect" site:example.com'>filetype:log "unable to connect" site:example.com</code>
+        </div>
+        <div class="flex space-x-2">
+            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+        </div>
+    </div>
+</div>
+<div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+    <div class="flex justify-between items-center">
+        <div>
+            <div class="font-bold text-green-300">Find authentication failures</div>
+            <code id="dork6" class="text-sm text-green-500 dork-code" data-original-text='filetype:log "authentication failed" site:example.com'>filetype:log "authentication failed" site:example.com</code>
+        </div>
+        <div class="flex space-x-2">
+            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+        </div>
+    </div>
+</div>
+<div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+    <div class="flex justify-between items-center">
+        <div>
+            <div class="font-bold text-green-300">Find DB passwords</div>
+            <code id="dork7" class="text-sm text-green-500 dork-code" data-original-text='filetype:json "db_password" -github site:example.com'>filetype:json "db_password" -github site:example.com</code>
+        </div>
+        <div class="flex space-x-2">
+            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+        </div>
+    </div>
+</div>
+                    <h1>Credentials</h1>
+                     <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Discover company email addresses</div>
+                            <code id="dork5" class="text-sm text-green-500 dork-code" data-original-text='"@example.com" ext:txt OR ext:csv site:example.com'>"@example.com" ext:txt OR ext:csv</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                     <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Find lists of email IDs</div>
+                            <code id="dork6" class="text-sm text-green-500 dork-code" data-original-text='ext:xls OR ext:csv "email" "password" site:example.com -github'>ext:xls OR ext:csv "email" "password" site:example.com -github</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                      <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Combine multiple terms for complex queries</div>
+                            <code id="dork6" class="text-sm text-green-500 dork-code" data-original-text='(ext:php OR ext:asp OR ext:jsp) "password" OR "credentials" -github site:example.com'>(ext:php OR ext:asp OR ext:jsp) "password" OR "credentials" -github.com site:example.com </code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Password Search</div>
+                            <code id="dork6" class="text-sm text-green-500 dork-code" data-original-text='filetype:ini "password" site:example.com'>filetype:ini "password" site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                <h1> Error Logs and Debug Data </h1>
+                     <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Expose Apache or Nginx logs</div>
+                            <code id="dork7" class="text-sm text-green-500 dork-code" data-original-text='"Apache Status" intitle:"Apache Server Information" site:example.com -site:apache.org'>"Apache Status" intitle:"Apache Server Information" site:example.com -site:apache.org</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                   <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Search for debugging logs</div>
+                            <code id="dork8" class="text-sm text-green-500 dork-code" data-original-text='ext:log "error" OR "debug" "username" OR "password" site:example.com'>ext:log "error" OR "debug" "username" OR "password" site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                 <h1> Vulnerable Endpoints </h1>
+                   <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Find Error Based SQLI</div>
+                            <code id="dork10" class="text-sm text-green-500 dork-code" data-original-text='site:example.com intext:"sql syntax near" OR intext:"syntax error" OR intext:"unexpected end of SQL" OR intext:"Warning: mysql_" OR intext:"pg_connect()" OR intext:"error in your SQL syntax" OR intext:"OLE DB Provider for SQL Server"'>site:example.com intext:"sql syntax near" OR intext:"syntax error" OR intext:"unexpected end of SQL" OR intext:"Warning: mysql_" OR intext:"pg_connect()" OR intext:"error in your SQL syntax" OR intext:"OLE DB Provider for SQL Server"</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Find XSS Param</div>
+                            <code id="dork9" class="text-sm text-green-500 dork-code" data-original-text='inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com'>inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Find SQL Param</div>
+                            <code id="dork9" class="text-sm text-green-500 dork-code" data-original-text='inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& site:example.com'>inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                   <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Find open cameras</div>
+                            <code id="dork9" class="text-sm text-green-500 dork-code" data-original-text='inurl:"/view/viewer_index.shtml" "Live View / - AXIS" site:example.com'>inurl:"/view/viewer_index.shtml" "Live View / - AXIS" site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Find Open Redirect Param</div>
+                            <code id="dork9" class="text-sm text-green-500 dork-code" data-original-text='inurl:redirectURL=http site:example.com:inurl:redir | inurl:url | inurl:redirect | inurl:return | inurl:src=http | inurl:r=http'>inurl:redirectURL=http site:example.com:inurl:redir | inurl:url | inurl:redirect | inurl:return | inurl:src=http | inurl:r=http</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Find LFI Param</div>
+                            <code id="dork9" class="text-sm text-green-500 dork-code" data-original-text='inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:example.com'>inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                   <div class="font-bold text-green-300">File upload endpoints</div>
+                            <code id="dork9" class="text-sm text-green-500 dork-code" data-original-text='site:example.com "choose file"'>site:example.com "choose file"</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                   <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Exposed Jenkins servers</div>
+                            <code id="dork10" class="text-sm text-green-500 dork-code" data-original-text='intitle:"Dashboard [Jenkins]" OR intitle:"Jenkins" inurl:/login site:example.com'>intitle:"Dashboard [Jenkins]" OR intitle:"Jenkins" inurl:/login site:example.com -site:apache.org</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Publicly accessible webcams</div>
+                            <code id="dork10" class="text-sm text-green-500 dork-code" data-original-text='
+intitle:"Live View / - AXIS" | "Network Camera" | "Sony Network Camera SNC" inurl:live site:example.com'>
+intitle:"Live View / - AXIS" | "Network Camera" | "Sony Network Camera SNC" inurl:live site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Exposed Jenkins servers</div>
+                            <code id="dork10" class="text-sm text-green-500 dork-code" data-original-text='intitle:"Dashboard [Jenkins]" OR intitle:"Jenkins" inurl:/login site:example.com'>intitle:"Dashboard [Jenkins]" OR intitle:"Jenkins" inurl:/login site:example.com -site:apache.org</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                <h1>API Keys and Secrets</h1>
+                   <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Search for exposed API keys</div>
+                            <code id="dork11" class="text-sm text-green-500 dork-code" data-original-text='ext:env OR ext:json OR ext:yaml "AWS_SECRET_ACCESS_KEY" OR "API_KEY" -github site:example.com'>ext:env OR ext:json OR ext:yaml "AWS_SECRET_ACCESS_KEY" OR "API_KEY" -github site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                  <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Google Maps API keys</div>
+                            <code id="dork11" class="text-sm text-green-500 dork-code" data-original-text='ext:js "AIzaSy" -github site:example.com'>ext:js "AIzaSy" -github site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                  <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Search for exposed API keys</div>
+                            <code id="dork11" class="text-sm text-green-500 dork-code" data-original-text='ext:env OR ext:json OR ext:yaml "AWS_SECRET_ACCESS_KEY" OR "API_KEY" -github site:example.com'>ext:env OR ext:json OR ext:yaml "AWS_SECRET_ACCESS_KEY" OR "API_KEY" -github site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                  <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Search for exposed API keys</div>
+                            <code id="dork11" class="text-sm text-green-500 dork-code" data-original-text='ext:env OR ext:json OR ext:yaml "AWS_SECRET_ACCESS_KEY" OR "API_KEY" -github site:example.com'>ext:env OR ext:json OR ext:yaml "AWS_SECRET_ACCESS_KEY" OR "API_KEY" -github site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+                  <div class="dork-item bg-gray-900 p-4 rounded-lg cursor-pointer hover:bg-opacity-80 transition-all">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-green-300">Search for exposed API keys</div>
+                            <code id="dork11" class="text-sm text-green-500 dork-code" data-original-text='ext:env OR ext:json OR ext:yaml "AWS_SECRET_ACCESS_KEY" OR "API_KEY" -github site:example.com'>ext:env OR ext:json OR ext:yaml "AWS_SECRET_ACCESS_KEY" OR "API_KEY" -github site:example.com</code>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="searchDork(this)" class="text-green-400 hover:text-green-200">🔍</button>
+                            <button onclick="copyDork(this)" class="text-green-400 hover:text-green-200">📋</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container">
+        <h2 data-text="Support BlackLine">Support BlackLine</h1>
+        <p>Join us to make a difference. Donate now and send your message to our Telegram group.</p>
+        <a href="https://saweria.co/yourusername" target="_blank" class="btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo">
+            Donate via Saweria
+        </a>
+
+        <div class="support-images">
+            <img src="https://via.placeholder.com/80?text=HACK" alt="Hack Symbol">
+            <img src="https://via.placeholder.com/80?text=CODE" alt="Code Symbol">
+            <img src="https://via.placeholder.com/80?text=DATA" alt="Data Symbol">
+        </div>
+    </div>
+    <script>
+        // Particle JS Configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#00ff41' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, color: '#00ff41', opacity: 0.2 },
+                move: { enable: true, speed: 1, direction: 'none', random: true }
+            }
+        });
+
+
+        // Real-time Domain Replace
+        const domainInput = document.getElementById('domainInput');
+        const dorkCodes = document.querySelectorAll('.dork-code');
+
+        domainInput.addEventListener('input', function() {
+            const newDomain = this.value || 'example.com';
+            
+            dorkCodes.forEach(code => {
+                const originalText = code.getAttribute('data-original-text');
+                const replacedText = originalText.replace(/example\.com/g, newDomain);
+                code.textContent = replacedText;
+            });
+        });
+
+        function searchDork(element) {
+            const domainInput = document.getElementById('domainInput');
+            const dorkCode = element.closest('.dork-item').querySelector('code');
+            const originalDork = dorkCode.textContent;
+            const modifiedDork = originalDork.replace('example.com', domainInput.value || 'example.com');
+            
+            window.open(`https://www.google.com/search?q=${encodeURIComponent(modifiedDork)}`, '_blank');
+        }
+
+        function copyDork(element) {
+            const dorkCode = element.closest('.dork-item').querySelector('code');
+            const dorkText = dorkCode.textContent;
+            
+            navigator.clipboard.writeText(dorkText).then(() => {
+                element.textContent = '✅';
+                setTimeout(() => { element.textContent = '📋'; }, 1000);
+            });
+        }
+    </script>
+</body>
+</html>
